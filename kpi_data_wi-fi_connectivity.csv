@@ -1,3 +1,3 @@
-"vertical","KPI Name","SLA Value","kpivalue","Samples","SLA Target Value"
-"Healthcare","Wi-Fi Connectivity","100.0","100.0","1624","100.0"
-"Higher Ed","Wi-Fi Connectivity","50.0","50.0","1686","100.0"
+"time","vertical","kpi_name","sla_value","kpi_value","samples","target_value"
+"2025-03-03","Healthcare","Wi-Fi Connectivity","100.0","100.0","7682","100.0"
+"2025-03-03","Higher Ed","Wi-Fi Connectivity","99.64467687832617","99.64467687832617","19267","100.0"
