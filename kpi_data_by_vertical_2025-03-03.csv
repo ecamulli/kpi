@@ -1,0 +1,25 @@
+time,vertical,kpi_name,sla_value,kpi_value,samples,target_value
+3/3/2025,Enterprise Office Space,Network Connectivity,75.1361989,75.1361989,466574,100
+3/3/2025,Enterprise Office Space,Network Quality,86.94818856,86.94818856,165041,100
+3/3/2025,Enterprise Office Space,Wi-Fi Connectivity,90.99238238,90.99238238,122765,100
+3/3/2025,Enterprise Office Space,Wi-Fi Quality,92.97214855,92.97214855,281356,100
+3/3/2025,High Density Large Venue,Network Connectivity,76.30539817,76.30539817,61832,100
+3/3/2025,High Density Large Venue,Network Quality,99.7181612,99.7181612,13434,100
+3/3/2025,High Density Large Venue,Wi-Fi Connectivity,94.72051452,94.72051452,12059,100
+3/3/2025,High Density Large Venue,Wi-Fi Quality,92.05936935,92.05936935,38896,100
+3/3/2025,Higher Education,Network Connectivity,92.92374553,92.92374553,395680,100
+3/3/2025,Higher Education,Network Quality,97.1284267,97.1284267,223955,100
+3/3/2025,Higher Education,Wi-Fi Connectivity,87.78007484,87.78007484,73024,100
+3/3/2025,Higher Education,Wi-Fi Quality,93.01280542,93.01280542,125577,100
+3/3/2025,Hospital Healthcare,Network Connectivity,78.05517208,78.05517208,177904,100
+3/3/2025,Hospital Healthcare,Network Quality,84.35501842,84.35501842,102276,100
+3/3/2025,Hospital Healthcare,Wi-Fi Connectivity,96.43707577,96.43707577,56775,100
+3/3/2025,Hospital Healthcare,Wi-Fi Quality,95.22782304,95.22782304,113481,100
+3/3/2025,Manufacturing and Distribution,Network Connectivity,77.62949188,77.62949188,553242,100
+3/3/2025,Manufacturing and Distribution,Network Quality,94.41024253,94.41024253,261268,100
+3/3/2025,Manufacturing and Distribution,Wi-Fi Connectivity,76.79925834,76.79925834,123045,100
+3/3/2025,Manufacturing and Distribution,Wi-Fi Quality,91.62534226,91.62534226,76643,100
+3/3/2025,Retail,Network Connectivity,64.46865884,64.46865884,137066,100
+3/3/2025,Retail,Network Quality,90.63481515,90.63481515,38306,100
+3/3/2025,Retail,Wi-Fi Connectivity,80.61759285,80.61759285,7014,100
+3/3/2025,Retail,Wi-Fi Quality,77.18553515,77.18553515,12836,100
