@@ -1,0 +1,60 @@
+account_name,vertical,kpiCode,name,kpiValue,samples
+AMD,Manufacturing and Distribution,QUAP008,HTTP DL Throughput,121.76415097835311,35235
+AMD,Manufacturing and Distribution,QUAP009,HTTP UL Throughput,113.63445886626869,35187
+ArchResources,Enterprise Office Space,QUAP008,HTTP DL Throughput,97.22783756787759,1737
+ArchResources,Enterprise Office Space,QUAP009,HTTP UL Throughput,27.60659495231932,1735
+AZSintLucas,Hospital Healthcare,QUAP008,HTTP DL Throughput,166.17246649820774,773
+AZSintLucas,Hospital Healthcare,QUAP009,HTTP UL Throughput,122.87124508298922,775
+Carhartt,Manufacturing and Distribution,QUAP008,HTTP DL Throughput,82.89273368922119,312
+Carhartt,Manufacturing and Distribution,QUAP009,HTTP UL Throughput,41.87268138441477,312
+Carlyle,Enterprise Office Space,QUAP008,HTTP DL Throughput,138.6895959411668,10469
+Carlyle,Enterprise Office Space,QUAP009,HTTP UL Throughput,103.05702002855237,10114
+CHKD,Hospital Healthcare,QUAP008,HTTP DL Throughput,97.91947087710292,12879
+CHKD,Hospital Healthcare,QUAP009,HTTP UL Throughput,124.42390948199021,12852
+ClevelandCavs,Enterprise Office Space,QUAP008,HTTP DL Throughput,196.57495099877605,248
+ClevelandCavs,Enterprise Office Space,QUAP009,HTTP UL Throughput,108.8248856066667,245
+CliffordChance,Enterprise Office Space,QUAP008,HTTP DL Throughput,174.52660055950162,2391
+CliffordChance,Enterprise Office Space,QUAP009,HTTP UL Throughput,129.2400743235917,2387
+Constellation,Manufacturing and Distribution,QUAP008,HTTP DL Throughput,123.4412127851287,5842
+Constellation,Manufacturing and Distribution,QUAP009,HTTP UL Throughput,59.41878382307405,11413
+Convene,Retail,QUAP008,HTTP DL Throughput,116.20652359907088,892
+Convene,Retail,QUAP009,HTTP UL Throughput,93.43249709044062,2089
+Excela,Hospital Healthcare,QUAP008,HTTP DL Throughput,99.46935384440229,198
+Excela,Hospital Healthcare,QUAP009,HTTP UL Throughput,90.92903396489562,198
+FIT,Higher Education,QUAP008,HTTP DL Throughput,163.3723734755755,3219
+FIT,Higher Education,QUAP009,HTTP UL Throughput,131.12122799940914,3214
+Heathrow,High Density Large Venue,QUAP008,HTTP DL Throughput,49.81484414814815,27
+Heathrow,High Density Large Venue,QUAP009,HTTP UL Throughput,41.33039114814815,27
+HZUniversity,Higher Education,QUAP008,HTTP DL Throughput,169.36998005520508,2158
+HZUniversity,Higher Education,QUAP009,HTTP UL Throughput,58.2509335684508,2149
+LLBean,Manufacturing and Distribution,QUAP008,HTTP DL Throughput,28.790116027234046,5354
+McKinsey,Enterprise Office Space,QUAP008,HTTP DL Throughput,276.480358733741,1140
+McKinsey,Enterprise Office Space,QUAP009,HTTP UL Throughput,76.25156184975963,1142
+Multicap,Enterprise Office Space,QUAP008,HTTP DL Throughput,183.24128346046507,91
+Multicap,Enterprise Office Space,QUAP009,HTTP UL Throughput,18.61444437931035,92
+NicklausHealth,Hospital Healthcare,QUAP008,HTTP DL Throughput,80.36503237169542,627
+NicklausHealth,Hospital Healthcare,QUAP009,HTTP UL Throughput,316.16998592683535,414
+Nike-Retail,Retail,QUAP008,HTTP DL Throughput,53.144327506948855,1464
+Nike-Retail,Retail,QUAP009,HTTP UL Throughput,53.389416969183685,1220
+OmahaPublicPower,Enterprise Office Space,QUAP008,HTTP DL Throughput,208.79751798924576,3250
+OmahaPublicPower,Enterprise Office Space,QUAP009,HTTP UL Throughput,22.48855712893444,2717
+RohdeSchwartz,Enterprise Office Space,QUAP008,HTTP DL Throughput,30.837715199999995,70
+RohdeSchwartz,Enterprise Office Space,QUAP009,HTTP UL Throughput,8.706894483870967,62
+Seahawks,High Density Large Venue,QUAP008,HTTP DL Throughput,82.1560017469708,237
+Seahawks,High Density Large Venue,QUAP009,HTTP UL Throughput,22.502478101867354,1396
+Securitas,Enterprise Office Space,QUAP008,HTTP DL Throughput,86.80273691686824,1212
+Securitas,Enterprise Office Space,QUAP009,HTTP UL Throughput,64.99410600184957,1232
+Sun River,Hospital Healthcare,QUAP008,HTTP DL Throughput,127.41618978090045,344
+Sun River,Hospital Healthcare,QUAP009,HTTP UL Throughput,30.648983748939862,2659
+SUNYBinghampton,Higher Education,QUAP008,HTTP DL Throughput,43.435756191323755,161
+SUNYBinghampton,Higher Education,QUAP009,HTTP UL Throughput,47.58045717290508,1457
+Swinerton,Enterprise Office Space,QUAP008,HTTP DL Throughput,98.9253563610584,1521
+Swinerton,Enterprise Office Space,QUAP009,HTTP UL Throughput,117.63647624313444,5058
+TempleUniversityHealth,Hospital Healthcare,QUAP008,HTTP DL Throughput,16.90659935385826,1182
+TempleUniversityHealth,Hospital Healthcare,QUAP009,HTTP UL Throughput,14.502984697544873,1182
+TransRe,Enterprise Office Space,QUAP008,HTTP DL Throughput,158.9127940952381,17
+TransRe,Enterprise Office Space,QUAP009,HTTP UL Throughput,43.56580472868957,191
+UNI ,Higher Education,QUAP008,HTTP DL Throughput,105.39506888182767,8820
+UNI ,Higher Education,QUAP009,HTTP UL Throughput,97.76711667474443,8791
+UWHealth,Hospital Healthcare,QUAP008,HTTP DL Throughput,245.12837540541537,1133
+UWHealth,Hospital Healthcare,QUAP009,HTTP UL Throughput,112.13225918151123,1131

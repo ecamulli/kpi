@@ -1,0 +1,52 @@
+account_name,vertical,kpiCode,name,kpiValue,samples
+AMD,Manufacturing and Distribution,QUAP005,VoIP MOS Downlink (Listening),4.047674499967792,35231
+AMD,Manufacturing and Distribution,QUAP006,VoIP MOS Uplink (Talking),3.893888891363381,35287
+AZSintLucas,Hospital Healthcare,QUAP005,VoIP MOS Downlink (Listening),4.036982894987603,783
+AZSintLucas,Hospital Healthcare,QUAP006,VoIP MOS Uplink (Talking),3.9906771808380217,783
+Carhartt,Manufacturing and Distribution,QUAP005,VoIP MOS Downlink (Listening),4.0360169272237245,310
+Carhartt,Manufacturing and Distribution,QUAP006,VoIP MOS Uplink (Talking),4.043788584905665,310
+Carlyle,Enterprise Office Space,QUAP005,VoIP MOS Downlink (Listening),4.0464330457263795,5645
+Carlyle,Enterprise Office Space,QUAP006,VoIP MOS Uplink (Talking),4.0325604756345745,9775
+ClevelandCavs,Enterprise Office Space,QUAP005,VoIP MOS Downlink (Listening),4.05,244
+ClevelandCavs,Enterprise Office Space,QUAP006,VoIP MOS Uplink (Talking),3.8136821225969086,243
+CliffordChance,Enterprise Office Space,QUAP005,VoIP MOS Downlink (Listening),3.973359696900021,2401
+CliffordChance,Enterprise Office Space,QUAP006,VoIP MOS Uplink (Talking),4.023733648937975,2401
+Constellation,Manufacturing and Distribution,QUAP005,VoIP MOS Downlink (Listening),4.009818823939824,5559
+Constellation,Manufacturing and Distribution,QUAP006,VoIP MOS Uplink (Talking),4.000484030213098,6463
+Convene,Retail,QUAP006,VoIP MOS Uplink (Talking),4.046838965201464,1102
+Excela,Hospital Healthcare,QUAP005,VoIP MOS Downlink (Listening),4.050000000000004,197
+Excela,Hospital Healthcare,QUAP006,VoIP MOS Uplink (Talking),4.042773126185962,198
+FIT,Higher Education,QUAP005,VoIP MOS Downlink (Listening),4.037250499312943,3208
+FIT,Higher Education,QUAP006,VoIP MOS Uplink (Talking),4.01263655146605,3214
+Heathrow,High Density Large Venue,QUAP005,VoIP MOS Downlink (Listening),4.049999999999998,27
+Heathrow,High Density Large Venue,QUAP006,VoIP MOS Uplink (Talking),4.006629629629628,27
+HZUniversity,Higher Education,QUAP005,VoIP MOS Downlink (Listening),4.044022997835496,1166
+HZUniversity,Higher Education,QUAP006,VoIP MOS Uplink (Talking),4.045626686109588,2340
+LLBean,Manufacturing and Distribution,QUAP005,VoIP MOS Downlink (Listening),4.011905559484454,5463
+LLBean,Manufacturing and Distribution,QUAP006,VoIP MOS Uplink (Talking),3.987561355558835,5464
+Multicap,Enterprise Office Space,QUAP005,VoIP MOS Downlink (Listening),4.0500000000000025,92
+Multicap,Enterprise Office Space,QUAP006,VoIP MOS Uplink (Talking),4.040729885057468,92
+NicklausHealth,Hospital Healthcare,QUAP005,VoIP MOS Downlink (Listening),4.048505760368643,629
+NicklausHealth,Hospital Healthcare,QUAP006,VoIP MOS Uplink (Talking),4.044698952879561,626
+Nike-Retail,Retail,QUAP006,VoIP MOS Uplink (Talking),4.05,11
+OmahaPublicPower,Enterprise Office Space,QUAP005,VoIP MOS Downlink (Listening),4.049445572881204,3243
+OmahaPublicPower,Enterprise Office Space,QUAP006,VoIP MOS Uplink (Talking),3.977888278348572,3247
+RohdeSchwartz,Enterprise Office Space,QUAP005,VoIP MOS Downlink (Listening),4.0378153846153895,65
+RohdeSchwartz,Enterprise Office Space,QUAP006,VoIP MOS Uplink (Talking),3.491079365079367,63
+Seahawks,High Density Large Venue,QUAP005,VoIP MOS Downlink (Listening),4.049999999999999,68
+Seahawks,High Density Large Venue,QUAP006,VoIP MOS Uplink (Talking),4.047131147540987,109
+Securitas,Enterprise Office Space,QUAP005,VoIP MOS Downlink (Listening),4.014593787536129,1223
+Securitas,Enterprise Office Space,QUAP006,VoIP MOS Uplink (Talking),4.01374188434037,1233
+Sun River,Hospital Healthcare,QUAP005,VoIP MOS Downlink (Listening),4.0459790918163625,505
+Sun River,Hospital Healthcare,QUAP006,VoIP MOS Uplink (Talking),3.968393621676966,734
+SUNYBinghampton,Higher Education,QUAP005,VoIP MOS Downlink (Listening),4.0019900492488665,287
+SUNYBinghampton,Higher Education,QUAP006,VoIP MOS Uplink (Talking),4.044861388365952,422
+Swinerton,Enterprise Office Space,QUAP005,VoIP MOS Downlink (Listening),4.040112970266195,1724
+Swinerton,Enterprise Office Space,QUAP006,VoIP MOS Uplink (Talking),4.0236434659381635,2073
+TempleUniversityHealth,Hospital Healthcare,QUAP005,VoIP MOS Downlink (Listening),4.035782702146332,1182
+TempleUniversityHealth,Hospital Healthcare,QUAP006,VoIP MOS Uplink (Talking),3.952537622549013,1176
+TransRe,Enterprise Office Space,QUAP006,VoIP MOS Uplink (Talking),4.049999999999999,52
+UNI ,Higher Education,QUAP005,VoIP MOS Downlink (Listening),3.9913682444111855,8716
+UNI ,Higher Education,QUAP006,VoIP MOS Uplink (Talking),3.9973549839524645,8796
+UWHealth,Hospital Healthcare,QUAP005,VoIP MOS Downlink (Listening),4.043446432335781,1128
+UWHealth,Hospital Healthcare,QUAP006,VoIP MOS Uplink (Talking),4.042629265965754,1133
