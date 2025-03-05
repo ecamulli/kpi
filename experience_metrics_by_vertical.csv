@@ -1,0 +1,107 @@
+account_name,vertical,kpiCode,name,kpiValue,samples
+AMD,Manufacturing and Distribution,QUAP008,HTTP DL Throughput,121.12661459815321,35294
+AMD,Manufacturing and Distribution,QUAP009,HTTP UL Throughput,113.229997462957,35247
+AMD,Manufacturing and Distribution,QUAP005,VoIP MOS Downlink (Listening),4.047801874887936,35278
+AMD,Manufacturing and Distribution,QUAP006,VoIP MOS Uplink (Talking),3.8961064366886853,35348
+ArchResources,Enterprise Office Space,QUAP008,HTTP DL Throughput,96.52004459841633,1743
+ArchResources,Enterprise Office Space,QUAP009,HTTP UL Throughput,27.860950248878535,1743
+AZSintLucas,Hospital Healthcare,QUAP008,HTTP DL Throughput,165.65379097446066,772
+AZSintLucas,Hospital Healthcare,QUAP009,HTTP UL Throughput,122.0796947801934,774
+AZSintLucas,Hospital Healthcare,QUAP005,VoIP MOS Downlink (Listening),4.036467420212759,779
+AZSintLucas,Hospital Healthcare,QUAP006,VoIP MOS Uplink (Talking),3.992731881491532,782
+Carhartt,Manufacturing and Distribution,QUAP008,HTTP DL Throughput,82.42345917351444,314
+Carhartt,Manufacturing and Distribution,QUAP009,HTTP UL Throughput,41.60105626445953,315
+Carhartt,Manufacturing and Distribution,QUAP005,VoIP MOS Downlink (Listening),4.035872820213393,312
+Carhartt,Manufacturing and Distribution,QUAP006,VoIP MOS Uplink (Talking),4.045576612903232,313
+Carlyle,Enterprise Office Space,QUAP008,HTTP DL Throughput,139.0038967246624,10492
+Carlyle,Enterprise Office Space,QUAP009,HTTP UL Throughput,102.79734516838745,10139
+Carlyle,Enterprise Office Space,QUAP005,VoIP MOS Downlink (Listening),4.0465414902859695,5646
+Carlyle,Enterprise Office Space,QUAP006,VoIP MOS Uplink (Talking),4.031922473924802,9805
+CHKD,Hospital Healthcare,QUAP008,HTTP DL Throughput,97.51048927329636,12880
+CHKD,Hospital Healthcare,QUAP009,HTTP UL Throughput,124.04031263950598,12854
+ClevelandCavs,Enterprise Office Space,QUAP008,HTTP DL Throughput,195.0043023225084,246
+ClevelandCavs,Enterprise Office Space,QUAP009,HTTP UL Throughput,110.53296250562565,244
+ClevelandCavs,Enterprise Office Space,QUAP005,VoIP MOS Downlink (Listening),4.0500000000000025,242
+ClevelandCavs,Enterprise Office Space,QUAP006,VoIP MOS Uplink (Talking),3.8306214059804464,242
+CliffordChance,Enterprise Office Space,QUAP008,HTTP DL Throughput,171.08815755285744,2388
+CliffordChance,Enterprise Office Space,QUAP009,HTTP UL Throughput,127.91325751612698,2380
+CliffordChance,Enterprise Office Space,QUAP005,VoIP MOS Downlink (Listening),3.963481161526796,2392
+CliffordChance,Enterprise Office Space,QUAP006,VoIP MOS Uplink (Talking),4.021710888523788,2392
+Constellation,Manufacturing and Distribution,QUAP008,HTTP DL Throughput,123.69175371984362,5864
+Constellation,Manufacturing and Distribution,QUAP009,HTTP UL Throughput,59.37288990603789,11511
+Constellation,Manufacturing and Distribution,QUAP005,VoIP MOS Downlink (Listening),4.009977917090654,5593
+Constellation,Manufacturing and Distribution,QUAP006,VoIP MOS Uplink (Talking),3.9998153082699983,6505
+Convene,Retail,QUAP008,HTTP DL Throughput,116.01486402884787,882
+Convene,Retail,QUAP009,HTTP UL Throughput,93.2791247486801,2059
+Convene,Retail,QUAP006,VoIP MOS Uplink (Talking),4.047217937722653,1096
+Excela,Hospital Healthcare,QUAP008,HTTP DL Throughput,99.03164396491229,196
+Excela,Hospital Healthcare,QUAP009,HTTP UL Throughput,90.57166446184212,196
+Excela,Hospital Healthcare,QUAP005,VoIP MOS Downlink (Listening),4.050000000000006,195
+Excela,Hospital Healthcare,QUAP006,VoIP MOS Uplink (Talking),4.037339254385971,196
+FIT,Higher Education,QUAP008,HTTP DL Throughput,163.20612878223224,3260
+FIT,Higher Education,QUAP009,HTTP UL Throughput,129.9198711380315,3254
+FIT,Higher Education,QUAP005,VoIP MOS Downlink (Listening),4.0358729707969925,3240
+FIT,Higher Education,QUAP006,VoIP MOS Uplink (Talking),4.009356845837317,3250
+Heathrow,High Density Large Venue,QUAP008,HTTP DL Throughput,49.81484414814815,27
+Heathrow,High Density Large Venue,QUAP009,HTTP UL Throughput,41.33039114814815,27
+Heathrow,High Density Large Venue,QUAP005,VoIP MOS Downlink (Listening),4.049999999999998,27
+Heathrow,High Density Large Venue,QUAP006,VoIP MOS Uplink (Talking),4.006629629629628,27
+HZUniversity,Higher Education,QUAP008,HTTP DL Throughput,169.5153123719767,2166
+HZUniversity,Higher Education,QUAP009,HTTP UL Throughput,58.96582036407846,2157
+HZUniversity,Higher Education,QUAP005,VoIP MOS Downlink (Listening),4.046871726190475,1168
+HZUniversity,Higher Education,QUAP006,VoIP MOS Uplink (Talking),4.047065420879204,2345
+LLBean,Manufacturing and Distribution,QUAP008,HTTP DL Throughput,28.249523920558257,5353
+LLBean,Manufacturing and Distribution,QUAP005,VoIP MOS Downlink (Listening),4.011028107185928,5463
+LLBean,Manufacturing and Distribution,QUAP006,VoIP MOS Uplink (Talking),3.982724684108535,5464
+McKinsey,Enterprise Office Space,QUAP008,HTTP DL Throughput,272.0879172977401,1147
+McKinsey,Enterprise Office Space,QUAP009,HTTP UL Throughput,76.12456406295266,1149
+Multicap,Enterprise Office Space,QUAP008,HTTP DL Throughput,186.641582649789,91
+Multicap,Enterprise Office Space,QUAP009,HTTP UL Throughput,18.556284160416666,92
+Multicap,Enterprise Office Space,QUAP005,VoIP MOS Downlink (Listening),4.0500000000000025,92
+Multicap,Enterprise Office Space,QUAP006,VoIP MOS Uplink (Talking),4.040618749999998,92
+NicklausHealth,Hospital Healthcare,QUAP008,HTTP DL Throughput,80.68130930384612,630
+NicklausHealth,Hospital Healthcare,QUAP009,HTTP UL Throughput,315.50894266902185,416
+NicklausHealth,Hospital Healthcare,QUAP005,VoIP MOS Downlink (Listening),4.048332904884296,628
+NicklausHealth,Hospital Healthcare,QUAP006,VoIP MOS Uplink (Talking),4.045763598326337,629
+Nike-Retail,Retail,QUAP008,HTTP DL Throughput,53.099817985799874,1475
+Nike-Retail,Retail,QUAP009,HTTP UL Throughput,53.07928783814832,1223
+Nike-Retail,Retail,QUAP006,VoIP MOS Uplink (Talking),4.05,11
+OmahaPublicPower,Enterprise Office Space,QUAP008,HTTP DL Throughput,206.46038101776247,3198
+OmahaPublicPower,Enterprise Office Space,QUAP009,HTTP UL Throughput,22.759597249389856,2690
+OmahaPublicPower,Enterprise Office Space,QUAP005,VoIP MOS Downlink (Listening),4.049395841623268,3193
+OmahaPublicPower,Enterprise Office Space,QUAP006,VoIP MOS Uplink (Talking),3.980016314371791,3193
+Seahawks,High Density Large Venue,QUAP008,HTTP DL Throughput,82.52726724084994,230
+Seahawks,High Density Large Venue,QUAP009,HTTP UL Throughput,22.36316360908117,1379
+Seahawks,High Density Large Venue,QUAP005,VoIP MOS Downlink (Listening),4.049999999999999,70
+Seahawks,High Density Large Venue,QUAP006,VoIP MOS Uplink (Talking),4.045550445632802,106
+Securitas,Enterprise Office Space,QUAP008,HTTP DL Throughput,85.90453275062119,1219
+Securitas,Enterprise Office Space,QUAP009,HTTP UL Throughput,64.14039422560502,1238
+Securitas,Enterprise Office Space,QUAP005,VoIP MOS Downlink (Listening),4.009468166174005,1226
+Securitas,Enterprise Office Space,QUAP006,VoIP MOS Uplink (Talking),4.011007117294702,1239
+Sun River,Hospital Healthcare,QUAP008,HTTP DL Throughput,127.68516153039553,345
+Sun River,Hospital Healthcare,QUAP009,HTTP UL Throughput,31.104832387181872,2655
+Sun River,Hospital Healthcare,QUAP005,VoIP MOS Downlink (Listening),4.046311428742651,524
+Sun River,Hospital Healthcare,QUAP006,VoIP MOS Uplink (Talking),3.9746167168006674,738
+SUNYBinghampton,Higher Education,QUAP008,HTTP DL Throughput,42.8261836562354,157
+SUNYBinghampton,Higher Education,QUAP009,HTTP UL Throughput,47.558305306831514,1443
+SUNYBinghampton,Higher Education,QUAP005,VoIP MOS Downlink (Listening),3.9883738068617025,297
+SUNYBinghampton,Higher Education,QUAP006,VoIP MOS Uplink (Talking),4.044854758089136,425
+Swinerton,Enterprise Office Space,QUAP008,HTTP DL Throughput,101.14331082260028,1532
+Swinerton,Enterprise Office Space,QUAP009,HTTP UL Throughput,119.23136810560997,5041
+Swinerton,Enterprise Office Space,QUAP005,VoIP MOS Downlink (Listening),4.038523312305182,1753
+Swinerton,Enterprise Office Space,QUAP006,VoIP MOS Uplink (Talking),4.025303197351367,2075
+TempleUniversityHealth,Hospital Healthcare,QUAP008,HTTP DL Throughput,16.92678798589532,1176
+TempleUniversityHealth,Hospital Healthcare,QUAP009,HTTP UL Throughput,14.468546424242419,1176
+TempleUniversityHealth,Hospital Healthcare,QUAP005,VoIP MOS Downlink (Listening),4.03102396694214,1176
+TempleUniversityHealth,Hospital Healthcare,QUAP006,VoIP MOS Uplink (Talking),3.9500465760672743,1170
+TransRe,Enterprise Office Space,QUAP008,HTTP DL Throughput,169.19827212121214,14
+TransRe,Enterprise Office Space,QUAP009,HTTP UL Throughput,41.71969288542389,191
+TransRe,Enterprise Office Space,QUAP006,VoIP MOS Uplink (Talking),4.049999999999998,55
+UNI ,Higher Education,QUAP008,HTTP DL Throughput,105.23173634447497,8794
+UNI ,Higher Education,QUAP009,HTTP UL Throughput,97.38147552710403,8771
+UNI ,Higher Education,QUAP005,VoIP MOS Downlink (Listening),3.9910446586431148,8702
+UNI ,Higher Education,QUAP006,VoIP MOS Uplink (Talking),3.9973033668773508,8773
+UWHealth,Hospital Healthcare,QUAP008,HTTP DL Throughput,242.93660362426627,1141
+UWHealth,Hospital Healthcare,QUAP009,HTTP UL Throughput,111.774536310604,1139
+UWHealth,Hospital Healthcare,QUAP005,VoIP MOS Downlink (Listening),4.042830439952377,1133
+UWHealth,Hospital Healthcare,QUAP006,VoIP MOS Uplink (Talking),4.0432865074019135,1141
