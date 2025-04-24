@@ -159,7 +159,7 @@ def process_access_points(session: requests.Session, target_networks: set, targe
 # ========== STREAMLIT APP ==========
 def main():
     st.title("Access Point KPI Dashboard")
-    st.markdown("Enter your credentials and parameters to fetch access point KPI data from the 7signal API.")
+    st.markdown("Enter your credentials and parameters to fetch access point KPI data for the last hour.")
 
     # Input fields
     account_name = st.text_input("Customer Name")
