@@ -102,6 +102,7 @@ def get_ap_kpi(ap_id: str, ap_name: str, session: requests.Session, kpi_code: st
                 logger.debug(f"No KPI results for AP {ap_name}")
                 return {}
             results = data["results"]
+            logger.debug(f"KPI response for AP {ap_name}: name={results[0].get('name', 'Missing')}")
             measurements = results[0].get("measurements5GHz", [])
             if not measurements:
                 logger.debug(f"No KPI measurements for AP {ap_name}")
@@ -159,13 +160,12 @@ def process_access_points(session: requests.Session, target_networks: set, targe
         ap_name = ap.get("name", "Unknown")
         kpi_data = get_ap_kpi(ap_id, ap_name, session, kpi_code)
         bssid = ap.get("bssid", "Unknown")
-        status = kpi_data.get("Latest Status", "N/A")
         raw_band = ap.get("band", "")
         band = str(raw_band).lower().replace("ghz", "") if raw_band else ""
         band = "5.0" if band == "5" else "6.0" if band == "6" else band
         raw_network = ap.get("network", "")
         network = raw_network.strip('"').lower() if isinstance(raw_network, str) else ""
-        logger.info(f"AP: {ap_name:<30} | BSSID: {bssid:<17} | Status: {status}")
+        logger.info(f"AP: {ap_name:<30} | BSSID: {bssid:<17} | Status: {kpi_data.get('Latest Status', 'N/A')}")
 
         result = {
             "Access Point Name": ap_name,
@@ -175,7 +175,8 @@ def process_access_points(session: requests.Session, target_networks: set, targe
             "Network": network,
             "KPI Code": kpi_code,
             "KPI Name": kpi_data.get("KPI Name", "Unknown"),
-            **kpi_data
+            "Avg KPI Value": kpi_data.get("Avg KPI Value", None),
+            "Latest Status": kpi_data.get("Latest Status", "N/A"),
         }
         results.append(result)
 
