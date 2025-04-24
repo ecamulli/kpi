@@ -310,10 +310,8 @@ def main():
 
         if results:
             df = pd.DataFrame(results)
-            # Sort by Latest Status
-            status_order = {"CRITICAL": 1, "WARN": 2, "OK": 3, "N/A": 4}
-            df["StatusRank"] = df["Latest Status"].map(status_order).fillna(4)
-            df = df.sort_values(by="StatusRank").drop(columns="StatusRank")
+            # Sort by Access Point Name
+            df = df.sort_values(by="Access Point Name")
             st.success("Data fetched successfully!")
             st.subheader("Results")
             st.dataframe(df)
