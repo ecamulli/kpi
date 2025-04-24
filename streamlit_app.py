@@ -32,6 +32,44 @@ PERIOD = 5  # Set to 5 seconds
 VALID_BANDS = {"2.4", "5.0", "5", "6.0", "6"}  # Valid bands for input validation
 DISPLAY_BANDS = ["2.4", "5.0", "6.0"]  # Fixed order for display
 
+# KPI List from KPI list.xlsx
+KPI_LIST = [
+    {"code": "AV010", "description": "AP channel"},
+    {"code": "QURS002", "description": "Signal strength"},
+    {"code": "AV008", "description": "Beacon availability"},
+    {"code": "AC001", "description": "Radio attach success rate"},
+    {"code": "AC004", "description": "Radio attach time"},
+    {"code": "RA103", "description": "Total EAP authentication success rate"},
+    {"code": "RA100", "description": "Total EAP authentication time"},
+    {"code": "AC002", "description": "DHCP success rate"},
+    {"code": "AC005", "description": "DHCP time"},
+    {"code": "DN002", "description": "Regular DNS query: Query success rate"},
+    {"code": "DN003", "description": "Regular DNS query: Successful query time"},
+    {"code": "QUAP005", "description": "VoIP MOS downlink (listening)"},
+    {"code": "QUAP006", "description": "VoIP MOS uplink (talking)"},
+    {"code": "QUAP008", "description": "HTTP DL throughput"},
+    {"code": "QUAP009", "description": "HTTP UL throughput"},
+    {"code": "QUAP013", "description": "Jitter in VoIP test"},
+    {"code": "QUAP015", "description": "Packet loss in VoIP test"},
+    {"code": "QUAP033", "description": "Jitter in VoIP uplink (talking) test"},
+    {"code": "QUAP034", "description": "Jitter in VoIP downlink (listening) test"},
+    {"code": "QUAP035", "description": "Packet loss in VoIP uplink (talking) test"},
+    {"code": "QUAP036", "description": "Packet loss in VoIP downlink (listening) test"},
+    {"code": "QUAP046", "description": "Web page download time"},
+    {"code": "QURT004", "description": "Ping RTT"},
+    {"code": "QURT007", "description": "Ping success rate"},
+    {"code": "QURT010", "description": "Ping default gateway RTT"},
+    {"code": "QURT011", "description": "Ping default gateway success rate"},
+    {"code": "TR003", "description": "Number of clients per AP"},
+    {"code": "TR062", "description": "Total air time utilization"},
+    {"code": "TR063", "description": "OFDMA air time utilization"},
+    {"code": "TR064", "description": "UL OFDMA air time utilization"},
+    {"code": "TR065", "description": "DL OFDMA air time utilization"},
+    {"code": "TR070", "description": "OFDMA traffic volume"},
+    {"code": "TR150", "description": "QBSS channel utilization"},
+    {"code": "TR151", "description": "QBSS station count"},
+]
+
 # ========== AUTH FUNCTION ==========
 def get_auth_token(client_id: str, client_secret: str) -> Optional[str]:
     """Fetch an OAuth2 access token using client credentials."""
@@ -122,8 +160,8 @@ def get_ap_kpi(ap_id: str, ap_name: str, session: requests.Session, kpi_code: st
     return {}
 
 # ========== PROCESS APS ==========
-def process_access_points(session: requests.Session, target_networks: set, target_bands: set, kpi_code: str) -> List[Dict]:
-    """Fetch and process access points, return results."""
+def process_access_points(session: requests.Session, target_networks: set, target_bands: set, kpi_codes: List[str]) -> List[Dict]:
+    """Fetch and process access points for multiple KPIs, return results."""
     access_points = get_access_points(session)
     
     # Filter access points by network name and band
@@ -158,40 +196,50 @@ def process_access_points(session: requests.Session, target_networks: set, targe
         sleep(0.5)  # Stagger requests
         ap_id = ap.get("id", "Unknown")
         ap_name = ap.get("name", "Unknown")
-        kpi_data = get_ap_kpi(ap_id, ap_name, session, kpi_code)
         bssid = ap.get("bssid", "Unknown")
         raw_band = ap.get("band", "")
         band = str(raw_band).lower().replace("ghz", "") if raw_band else ""
         band = "5.0" if band == "5" else "6.0" if band == "6" else band
         raw_network = ap.get("network", "")
         network = raw_network.strip('"').lower() if isinstance(raw_network, str) else ""
-        logger.info(f"AP: {ap_name:<30} | BSSID: {bssid:<17} | Status: {kpi_data.get('Latest Status', 'N/A')}")
 
-        result = {
-            "Access Point Name": ap_name,
-            "BSSID": bssid,
-            "Service Area": ap.get("serviceAreaName"),
-            "Band": band,
-            "Network": network,
-            "KPI Code": kpi_code,
-            "KPI Name": kpi_data.get("KPI Name", "Unknown"),
-            "Avg KPI Value": kpi_data.get("Avg KPI Value", None),
-            "Latest Status": kpi_data.get("Latest Status", "N/A"),
-        }
-        results.append(result)
+        for kpi_code in kpi_codes:
+            kpi_data = get_ap_kpi(ap_id, ap_name, session, kpi_code)
+            logger.info(f"AP: {ap_name:<30} | BSSID: {bssid:<17} | KPI: {kpi_code:<8} | Status: {kpi_data.get('Latest Status', 'N/A')}")
+
+            result = {
+                "Access Point Name": ap_name,
+                "BSSID": bssid,
+                "Service Area": ap.get("serviceAreaName"),
+                "Band": band,
+                "Network": network,
+                "KPI Code": kpi_code,
+                "KPI Name": kpi_data.get("KPI Name", "Unknown"),
+                "Avg KPI Value": kpi_data.get("Avg KPI Value", None),
+                "Latest Status": kpi_data.get("Latest Status", "N/A"),
+            }
+            results.append(result)
 
     return results
 
 # ========== STREAMLIT APP ==========
 def main():
     st.title("Access Point KPI Dashboard")
-    st.markdown("Enter your credentials and parameters to fetch access point KPI data for the last hour.")
+    st.markdown("Enter your credentials and select up to 4 KPIs to fetch access point data for the last hour.")
 
     # Input fields
     account_name = st.text_input("Customer Name")
     client_id = st.text_input("Client ID")
     client_secret = st.text_input("Client Secret", type="password")
-    kpi_code = st.text_input("KPI Code")
+
+    # KPI selection
+    kpi_options = [f"{kpi['description']} ({kpi['code']})" for kpi in KPI_LIST]
+    selected_kpis = st.multiselect(
+        "Select up to 4 KPIs",
+        options=kpi_options,
+        max_selections=4,
+        help="Choose 1–4 KPIs to analyze."
+    )
 
     # Initialize session state for networks and results
     if "networks" not in st.session_state:
@@ -233,9 +281,21 @@ def main():
 
     # Run button
     if st.button("Fetch KPI Data"):
-        if not all([account_name, client_id, client_secret, kpi_code, target_networks, target_bands]):
-            st.error("All fields (Customer Name, Client ID, Client Secret, KPI Code, Networks, Bands) must be provided.")
+        if not all([account_name, client_id, client_secret, selected_kpis, target_networks, target_bands]):
+            st.error("All fields (Customer Name, Client ID, Client Secret, KPIs, Networks, Bands) must be provided.")
             return
+
+        if len(selected_kpis) > 4:
+            st.error("Please select up to 4 KPIs.")
+            return
+
+        # Extract kpi_codes from selected_kpis
+        kpi_codes = []
+        for selected in selected_kpis:
+            for kpi in KPI_LIST:
+                if f"{kpi['description']} ({kpi['code']})" == selected:
+                    kpi_codes.append(kpi['code'])
+                    break
 
         target_networks = {n.lower() for n in target_networks}
         target_bands = {b.lower() for b in target_bands if b.lower() in VALID_BANDS}
@@ -245,7 +305,7 @@ def main():
             return
 
         with st.spinner("Fetching KPI data..."):
-            results = process_access_points(st.session_state.session, target_networks, target_bands, kpi_code)
+            results = process_access_points(st.session_state.session, target_networks, target_bands, kpi_codes)
             st.session_state.results = results
 
         if results:
@@ -290,7 +350,7 @@ def main():
                     mime="application/json"
                 )
         else:
-            st.warning("No data found for the selected networks and bands.")
+            st.warning("No data found for the selected networks, bands, or KPIs.")
 
 if __name__ == "__main__":
     main()
