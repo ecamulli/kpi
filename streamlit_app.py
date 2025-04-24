@@ -13,8 +13,14 @@ import json
 from io import BytesIO
 
 # ========== CONFIG ==========
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s", filename="kpi.log")
 logger = logging.getLogger(__name__)
+
+# Suppress console logging
+logger.handlers = [h for h in logger.handlers if not isinstance(h, logging.StreamHandler)]
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.CRITICAL)  # Only critical errors to console
+logger.addHandler(console_handler)
 
 AUTH_URL = "https://api-v2.7signal.com/oauth2/token"
 BASE_URL = "https://api-v2.7signal.com"
@@ -54,6 +60,7 @@ def get_networks(session: requests.Session) -> List[str]:
         response.raise_for_status()
         networks = response.json().get("results", [])
         network_names = [network.get("name", "").strip() for network in networks if network.get("name")]
+        logger.debug(f"Parsed network names: {network_names}")
         return sorted(set(network_names))  # Remove duplicates and sort
     except requests.RequestException as e:
         logger.error(f"Failed to fetch networks: {e}")
@@ -66,7 +73,9 @@ def get_access_points(session: requests.Session) -> List[Dict]:
     try:
         response = session.get(url, timeout=10)
         response.raise_for_status()
-        return response.json().get("results", [])
+        aps = response.json().get("results", [])
+        logger.debug("Parsed access points: %s", [f"ID={ap.get('id')}, Name={ap.get('name')}, Network={ap.get('network')}, Band={ap.get('band')}" for ap in aps])
+        return aps
     except requests.RequestException as e:
         logger.error(f"Failed to fetch access points: {e}")
         return []
@@ -90,17 +99,18 @@ def get_ap_kpi(ap_id: str, ap_name: str, session: requests.Session, kpi_code: st
             logger.debug(f"Rate limit headers: {response.headers}")
             data = response.json()
             if "results" not in data or not data["results"]:
-                logger.warning(f"No KPI results for AP {ap_name}")
+                logger.debug(f"No KPI results for AP {ap_name}")
                 return {}
             results = data["results"]
             measurements = results[0].get("measurements5GHz", [])
             if not measurements:
-                logger.warning(f"No KPI measurements for AP {ap_name}")
+                logger.debug(f"No KPI measurements for AP {ap_name}")
                 return {}
             avg_kpi = sum(m["kpiValue"] for m in measurements) / len(measurements)
             return {
+                "KPI Name": results[0].get("name", "Unknown"),
                 "Avg KPI Value": round(avg_kpi, 2),
-                "Latest Status": measurements[-1].get("status"),
+                "Latest Status": measurements[-1].get("status") or "N/A",
             }
         except requests.RequestException as e:
             logger.error(f"Request error for AP {ap_name}: {e}")
@@ -116,16 +126,25 @@ def process_access_points(session: requests.Session, target_networks: set, targe
     access_points = get_access_points(session)
     
     # Filter access points by network name and band
-    valid_aps = [
-        ap for ap in access_points
-        if isinstance(ap, dict) and "id" in ap and "network" in ap and "band" in ap
-        and ap["network"] and ap["network"].strip('"').lower() in target_networks
-        and ap["band"] and (
-            band := str(ap["band"]).lower().replace("ghz", ""),
-            band := "5.0" if band == "5" else "6.0" if band == "6" else band,
-            band in target_bands
-        )[1]
-    ]
+    valid_aps = []
+    for ap in access_points:
+        if not (isinstance(ap, dict) and "id" in ap and "band" in ap):
+            logger.debug(f"Skipping invalid AP: {ap}")
+            continue
+        # Handle network
+        raw_network = ap.get("network", "")
+        network = raw_network.strip('"').lower() if isinstance(raw_network, str) else ""
+        if raw_network is None:
+            logger.debug(f"AP with ID={ap.get('id')}, Name={ap.get('name')} has network=None: {ap}")
+        # Handle band
+        raw_band = ap.get("band", "")
+        band = str(raw_band).lower().replace("ghz", "") if raw_band else ""
+        band = "5.0" if band == "5" else "6.0" if band == "6" else band
+        # Check if AP matches
+        if network in target_networks and band in target_bands:
+            valid_aps.append(ap)
+        else:
+            logger.debug(f"AP rejected: Network={network} not in {target_networks}, Band={band} not in {target_bands}")
     
     if not valid_aps:
         logger.warning(f"No access points found for networks: {', '.join(target_networks)} and bands: {', '.join(target_bands)}")
@@ -136,12 +155,16 @@ def process_access_points(session: requests.Session, target_networks: set, targe
 
     for ap in valid_aps:
         sleep(0.5)  # Stagger requests
+        ap_id = ap.get("id", "Unknown")
         ap_name = ap.get("name", "Unknown")
-        kpi_data = get_ap_kpi(ap["id"], ap_name, session, kpi_code)
+        kpi_data = get_ap_kpi(ap_id, ap_name, session, kpi_code)
         bssid = ap.get("bssid", "Unknown")
         status = kpi_data.get("Latest Status", "N/A")
-        band = ap.get("band", "Unknown")
-        network = ap.get("network", "Unknown").strip('"')
+        raw_band = ap.get("band", "")
+        band = str(raw_band).lower().replace("ghz", "") if raw_band else ""
+        band = "5.0" if band == "5" else "6.0" if band == "6" else band
+        raw_network = ap.get("network", "")
+        network = raw_network.strip('"').lower() if isinstance(raw_network, str) else ""
         logger.info(f"AP: {ap_name:<30} | BSSID: {bssid:<17} | Status: {status}")
 
         result = {
@@ -150,6 +173,8 @@ def process_access_points(session: requests.Session, target_networks: set, targe
             "Service Area": ap.get("serviceAreaName"),
             "Band": band,
             "Network": network,
+            "KPI Code": kpi_code,
+            "KPI Name": kpi_data.get("KPI Name", "Unknown"),
             **kpi_data
         }
         results.append(result)
@@ -224,6 +249,10 @@ def main():
 
         if results:
             df = pd.DataFrame(results)
+            # Sort by Latest Status
+            status_order = {"CRITICAL": 1, "WARN": 2, "OK": 3, "N/A": 4}
+            df["StatusRank"] = df["Latest Status"].map(status_order).fillna(4)
+            df = df.sort_values(by="StatusRank").drop(columns="StatusRank")
             st.success("Data fetched successfully!")
             st.subheader("Results")
             st.dataframe(df)
@@ -236,7 +265,7 @@ def main():
                 df.to_excel(writer, sheet_name="AP KPI Summary", index=False)
                 worksheet = writer.sheets["AP KPI Summary"]
                 for i, col in enumerate(df.columns):
-                    column_len = max(len(col), df[col].astype(str).map(len).max())
+                    column_len = max(len(str(col)), df[col].astype(str).map(len).max())
                     worksheet.set_column(i, i, min(column_len + 2, 50))
             excel_data = output.getvalue()
 
