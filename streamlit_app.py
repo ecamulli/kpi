@@ -122,8 +122,9 @@ def get_access_points(session: requests.Session) -> List[Dict]:
 @sleep_and_retry
 @limits(calls=CALLS, period=PERIOD)
 def get_ap_kpi(ap_id: str, ap_name: str, session: requests.Session, kpi_code: str, retries: int = 3) -> Dict:
-    """Fetch KPI data for a specific access point."""
+    """Fetch KPI data for a specific access point and calculate average status score."""
     url = f"{BASE_URL}/kpis/sensors/access-points/{ap_id}?kpiCodes={kpi_code}&averaging={AVERAGING}&timelimit={TIMELIMIT}"
+    status_scores = {"CRITICAL": 0, "WARN": 1, "OK": 2}  # Define status scores
     for attempt in range(retries):
         try:
             response = session.get(url, timeout=10)
@@ -145,11 +146,27 @@ def get_ap_kpi(ap_id: str, ap_name: str, session: requests.Session, kpi_code: st
             if not measurements:
                 logger.debug(f"No KPI measurements for AP {ap_name}")
                 return {}
+            
+            # Calculate average KPI value
             avg_kpi = sum(m["kpiValue"] for m in measurements) / len(measurements)
+            
+            # Calculate average status score
+            statuses = [m.get("status", "N/A") for m in measurements]
+            total_measurements = len(statuses)
+            if total_measurements > 0:
+                ok_count = statuses.count("OK")
+                warn_count = statuses.count("WARN")
+                critical_count = statuses.count("CRITICAL")
+                weighted_sum = (ok_count * status_scores["OK"]) + (warn_count * status_scores["WARN"]) + (critical_count * status_scores["CRITICAL"])
+                avg_status_score = round(weighted_sum / total_measurements, 2)
+            else:
+                avg_status_score = None  # No measurements, no status score
+            
             return {
                 "KPI Name": results[0].get("name", "Unknown"),
                 "Avg KPI Value": round(avg_kpi, 2),
                 "Latest Status": measurements[-1].get("status") or "N/A",
+                "Avg Status Score": avg_status_score
             }
         except requests.RequestException as e:
             logger.error(f"Request error for AP {ap_name}: {e}")
@@ -181,7 +198,7 @@ def process_access_points(session: requests.Session, target_networks: set, targe
         band = "5.0" if band == "5" else "6.0" if band == "6" else band
         # Check if AP matches
         if network in target_networks and band in target_bands:
-            valid_aps.append(ap)
+            valid_aps.append(aps)
         else:
             logger.debug(f"AP rejected: Network={network} not in {target_networks}, Band={band} not in {target_bands}")
     
@@ -217,6 +234,7 @@ def process_access_points(session: requests.Session, target_networks: set, targe
                 "KPI Name": kpi_data.get("KPI Name", "Unknown"),
                 "Avg KPI Value": kpi_data.get("Avg KPI Value", None),
                 "Latest Status": kpi_data.get("Latest Status", "N/A"),
+                "Avg Status Score": kpi_data.get("Avg Status Score", None)
             }
             results.append(result)
 
