@@ -198,7 +198,7 @@ def process_access_points(session: requests.Session, target_networks: set, targe
         band = "5.0" if band == "5" else "6.0" if band == "6" else band
         # Check if AP matches
         if network in target_networks and band in target_bands:
-            valid_aps.append(aps)
+            valid_aps.append(ap)
         else:
             logger.debug(f"AP rejected: Network={network} not in {target_networks}, Band={band} not in {target_bands}")
     
@@ -234,7 +234,7 @@ def process_access_points(session: requests.Session, target_networks: set, targe
                 "KPI Name": kpi_data.get("KPI Name", "Unknown"),
                 "Avg KPI Value": kpi_data.get("Avg KPI Value", None),
                 "Latest Status": kpi_data.get("Latest Status", "N/A"),
-                "Avg Status Score": kpi_data.get("Avg Status Score", None)
+                "Avg Status Score (0-2)": kpi_data.get("Avg Status Score", None)
             }
             results.append(result)
 
